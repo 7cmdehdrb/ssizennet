@@ -8,7 +8,7 @@ flake8 = "*"
 black = "*"
 
 [packages]
-django = "==2.2.5"
+django = "*"
 pillow = "*"
 npm = "*"
 whitenoise = "*"
@@ -16,6 +16,7 @@ python-telegram-bot = "*"
 django-dotenv = "*"
 requests = "*"
 awsebcli = "*"
+pipenv-to-requirements = "*"
 
 [requires]
 python_version = "3.8"
