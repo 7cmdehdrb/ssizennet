@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block title_name %}
+Update Acception
+{% endblock title_name %}
+
+{% block content %}
+
+<div class="container block lg:w-5/12 md:w-1/2 mx-auto my-10 items-center p-5 border border-gray-500 mt-24">
+    <div class="text-center my-10">
+
+        <i class="fas fa-exclamation-triangle text-yellow-600 text-5xl mb-6"></i>
+        <br><span class="font-bold">승인 여부를 변경하면 자동적으로 메세지가 발송됩니다
+            <br>정말 변경하시겠습니까?
+        </span>
+
+    </div>
+
+    <div class="flex justify-center">
+        <div class="w-1/4">
+            <form class="text-center" method="post" action="{% url "reservations:updateacception" reservation.pk %}"
+                enctype="multipart/form-data">
+                {% csrf_token %}
+
+                <input class="hidden" type="checkbox" name="accept" checked>
+
+                <button class=""><i class="fas fa-check-circle text-green-600 text-6xl"></i></button>
+            </form>
+        </div>
+
+        <div class="w-1/4">
+            <form class="text-center" method="post" action="{% url "reservations:updateacception" reservation.pk %}"
+                enctype="multipart/form-data">
+                {% csrf_token %}
+
+                <input class="hidden" type="checkbox" name="accept">
+
+                <button class=""><i class="fas fa-times-circle text-red-600 text-6xl"></i></button>
+            </form>
+        </div>
+    </div>
+    <div class="text-center flex mt-10 bg-gray-700 w-70% mx-auto justify-center bg-red-400 hover:bg-red-500 rounded-lg">
+        <a href="{% url "reservations:reservationlist" %}" class="font-bold text-lg py-5 px-20">뒤로가기</a>
+    </div>
+</div>
+
+
+
+{% endblock content %}

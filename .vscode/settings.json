@@ -1,0 +1,11 @@
+{
+    "python.pythonPath": "C:\\Users\\M\\.virtualenvs\\SSIZENNET_EQUIP-fShVtKgP\\Scripts\\python.exe",
+    "python.linting.pylintEnabled": false,
+    "python.linting.flake8Enabled": true,
+    "python.linting.enabled": true,
+    "editor.formatOnSave": true,
+    "python.formatting.provider": "black",
+    "python.linting.flake8Args": [
+        "--max-line-length=88"
+    ]
+}

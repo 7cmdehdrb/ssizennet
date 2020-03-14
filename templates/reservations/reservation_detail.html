@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block title_name %}
+{{reservation.purpose}}
+{% endblock title_name %}
+
+{% block content %}
+
+
+{% if True %}
+
+<div class="container lg:w-5/12 md:w-1/2 mx-auto my-10 flex flex-col items-center p-5 border border-gray-500 mt-24">
+    PAGE NOT FOUND
+</div>
+
+{% else %}
+
+<div class="container lg:w-5/12 md:w-1/2 mx-auto my-10 flex flex-col items-center p-5 border border-gray-500 mt-24">
+
+    <span class="text-center font-bold">대여자: {{reserv_obj.lender}}<br></span>
+    <span class="text-center font-bold">카테고리: {{reserv_obj.catagory}}<br></span>
+    <span class="text-center font-bold">대여목적: {{reserv_obj.purpose}}<br></span>
+    <span class="text-center font-bold">대여내용: {{reserv_obj.equipment}}<br></span>
+    <span class="text-center font-bold">대여 예정일: {{reserv_obj.check_in}}<br></span>
+    <span class="text-center font-bold">반납 예정일: {{reserv_obj.check_out}}<br></span>
+    <span class="text-center font-bold">현 상태: {{reserv_obj.status}}<br></span>
+    <span class="text-center font-bold">승인 여부: {{reserv_obj.accept}}<br></span>
+
+</div>
+
+{% endif %}
+
+{% endblock %}

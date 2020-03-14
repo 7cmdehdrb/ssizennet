@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+
+{% block title_name %}
+{{equip.name}}
+{% endblock title_name %}
+
+{% block content %}
+
+<div class="container lg:w-5/12 md:w-1/2 mx-auto my-10 flex flex-col items-center p-5 border border-gray-500 mt-24">
+
+    <div class="flex justify-center overflow-hidden mb-4">
+        {% if equip_obj.photo %}
+        <img src="{{equip_obj.photo.url}}" alt="{{equip_obj.name}}"></img>
+        {% else %}
+        <span class="flex bg-black rounded-full text-center w-64 h-64">
+            <span class="flex text-3xl text-white my-auto mx-auto">{{equip_obj.name}}</span>
+        </span>
+        {% endif %}
+    </div>
+
+    <table class="table-auto text-center">
+        <thead>
+            <tr>
+                <th class="px-4 py-2">분류</th>
+                <th class="px-4 py-2">내용</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="border px-4 py-2">이름</td>
+                <td class="border px-4 py-2">{{equip_obj.name}}</td>
+            </tr>
+            <tr class="bg-gray-100">
+                <td class="border px-4 py-2">시리얼 넘버</td>
+                <td class="border px-4 py-2">{{equip_obj.serial_number}}</td>
+            </tr>
+            <tr>
+                <td class="border px-4 py-2">장비 분류</td>
+                <td class="border px-4 py-2">{{equip_obj.equiptype}}</td>
+            </tr>
+            <tr>
+                <td class="border px-4 py-2">사용 가능 여부</td>
+                <td class="border px-4 py-2">
+
+                    {% if equip_obj.enable %}
+                    <i class="fas fa-check-circle text-green-600"></i>
+                    {% else %}
+                    <i class="fas fa-times-circle text-red-600"></i>
+                    {% endif %}
+
+                </td>
+            </tr>
+            <tr>
+                <td class="border px-4 py-2">설명</td>
+                <td class="border px-4 py-2">{{equip_obj.explain}}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{% url "equips:equiplist" %}" class="btn_sn mt-4 w-1/2">뒤로</a>
+
+</div>
+
+{% endblock %}

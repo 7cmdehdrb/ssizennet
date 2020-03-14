@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block title_name %}
+{{user.email}}
+{% endblock title_name %}
+
+{% block content %}
+
+<div class="container lg:w-5/12 md:w-1/2 mx-auto my-10 flex flex-col items-center p-5 border border-gray-500 mt-24">
+
+
+    <!-- <div class="bg-black rounded-full h-20 w-20 flex justify-center overflow-hidden mb-4">
+        {% if user_obj.avatar %}
+        <img src="{{user_obj.avatar.url}}" alt="{{user_obj.first_name}} Avatar"></img>
+        {% else %}
+        <span class="text-5xl text-white text-center pt-1">{{user_obj.username|first}}</span>
+        {% endif %}
+    </div> -->
+
+    <div class="flex justify-center overflow-hidden mb-4">
+        {% if user_obj.avatar %}
+        <img src="{{user_obj.avatar.url}}" alt="{{user_obj.name}}" class="w-full h-full"></img>
+        {% else %}
+        <span class="flex bg-black rounded-full text-center w-64 h-64">
+            <span class="flex text-3xl text-white my-auto mx-auto">{{user_obj.username}}</span>
+        </span>
+        {% endif %}
+    </div>
+
+
+    <span class="text-center font-bold">부서: {{user_obj.departure}}<br></span>
+    <span class="text-center font-bold">기수: {{user_obj.order}}<br></span>
+    <span class="text-center font-bold">카카오톡 ID: {{user_obj.kakaotalk}}<br></span>
+
+    {% if user_obj.upperuser %}
+    <span class="uppercase font-bold border border-black px-1 rounded-lg mt-5 mb-1">부장</span>
+    {% else %}
+    <span class="uppercase font-bold border border-black px-1 rounded-lg mt-5 my-1">부원</span>
+    {% endif %}
+
+
+    {% if user == user_obj %}
+    <a href="{% url "users:updateprofile" %}" class="btn_sn mt-10 mb-2 text-lg">프로필 수정</a>
+    <a href="{% url "users:updatepassword" %}" class="btn_sn my-2 text-lg"><span>비밀번호 변경</span></a>
+    {% endif %}
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,86 @@
+// npm run css
+@tailwind base;
+@tailwind components;
+
+.nav_link_sn {
+    @apply w-32 border-b-2 border-white h-full flex items-center;
+    a {
+        @apply py-8 px-5;
+    }
+    &:hover {
+        @apply border-gray-600;
+    }
+}
+
+.btn_sn {
+    @apply w-full px-20 py-2 text-center rounded-lg bg-orange-400 text-center text-xl;
+    &:hover {
+        @apply bg-orange-500;
+    }
+}
+
+.form {
+    input {
+        @apply w-full px-5 py-2 text-left rounded-lg border border-black my-5;
+        &:focus {
+            @apply outline-none border-teal-800;
+        }
+    }
+}
+
+.homelist_sn {
+    @apply block rounded-lg text-center text-2xl font-bold mx-auto px-16 py-10 my-5;
+}
+
+@keyframes messageFadeIn {
+    0% {
+      opacity: 0;
+      transform: translateY(-50px);
+    }
+    5% {
+      opacity: 1;
+      transform: translateY(50px);
+    }
+    95% {
+      opacity: 1;
+      transform: translateY(50px);
+    }
+    100% {
+      opacity: 0;
+      transform: translateY(-50px);
+    }
+  }
+  
+.message_sn {
+    animation: messageFadeIn 5s ease-in-out forwards;
+    &.error {
+      @apply bg-red-600;
+    }
+    &.info {
+      @apply bg-blue-500;
+    }
+    &.success {
+      @apply bg-green-500;
+    }
+    &.warning {
+      @apply bg-yellow-400;
+    }
+  }
+
+input
+textarea,
+select {
+  @apply rounded-lg py-5 my-2 font-light text-lg w-full text-left border border-gray-600 px-5 h-auto;
+  &:focus {
+    @apply outline-none border-teal-500;
+  }
+}
+
+textarea {
+  resize: none;
+  height: 100px;
+}
+
+
+
+@tailwind utilities;

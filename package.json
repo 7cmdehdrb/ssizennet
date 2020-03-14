@@ -1,0 +1,25 @@
+{
+  "name": "ssizennet",
+  "version": "1.0.0",
+  "description": "with python django... etc\r what the problems",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/7cmdehdrb/ssizennet.git"
+  },
+  "scripts": {
+    "css": "gulp"
+  },
+  "homepage": "https://github.com/7cmdehdrb/ssizennet#readme",
+  "devDependencies": {
+    "autoprefixer": "^9.7.4",
+    "gulp": "^4.0.2",
+    "gulp-csso": "^4.0.1",
+    "gulp-postcss": "^8.0.0",
+    "gulp-sass": "^4.0.2",
+    "node-sass": "^4.13.1",
+    "tailwindcss": "^1.2.0"
+  },
+  "dependencies": {
+    "dotenv": "^8.2.0"
+  }
+}

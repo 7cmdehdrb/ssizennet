@@ -1,0 +1,32 @@
+<ul class="flex items-center text-sm font-bold h-full">
+
+
+
+    <li class="nav_link_sn">
+        <a href="{% url "reservations:reservationlist" %}" class="mx-auto">예약목록</a>
+    </li>
+    <li class="nav_link_sn">
+        <a href="{% url "reservations:makereservation" %}" class="mx-auto">장비예약</a>
+    </li>
+    <li class="nav_link_sn">
+        <a href="{% url "reservations:instantreservation" %}" class="mx-auto">당일예약</a>
+    </li>
+    <!-- <li class="nav_link_sn">
+        <a href="{% url "equips:equiplist" %}" class="mx-auto">장비목록</a>
+    </li> -->
+
+
+    {% if user.is_authenticated %}
+    <li class="nav_link_sn">
+        <a href="{{user.get_absolute_url}}" class="mx-auto">내 프로필</a>
+    </li>
+    <li class="nav_link_sn">
+        <a href="{% url "users:logout" %}" class="mx-auto">로그아웃</a></li>
+    {% else %}
+    <li class="nav_link_sn">
+        <a href="{% url "users:signup" %}" class="mx-auto">회원가입</a></li>
+    <li class="nav_link_sn">
+        <a href="{% url "users:login" %}" class="mx-auto">로그인</a></li>
+    {% endif %}
+
+</ul>

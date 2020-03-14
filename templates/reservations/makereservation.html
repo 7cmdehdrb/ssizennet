@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title_name %}
+Reservation
+{% endblock title_name %}
+
+
+{% block content %}
+<script type="text/javascript" src="{% static 'js/jquery-3.1.1.min.js' %}"></script>
+<script type="text/javascript" src="/static/admin/js/jquery.min.js"></script>
+<script type="text/javascript" src="/static/admin/js/jquery.init.js"></script>
+
+<div class="container lg:w-5/12 md:w-1/2 mx-auto my-10 flex flex-col items-center p-5 border border-gray-500 mt-24">
+    <form method="post" action="{% url "reservations:makereservation" %}" class="">
+        {% csrf_token %}
+
+        <span class="hidden">{{form.lender}}</span>
+        <span class="hidden">{{form.instant_boolean}}</span>
+        <span class="hidden">{{form.reserv_code}}</span>
+
+        <span class="font-bold">{{form.check_in.label}}</span>
+        <span class="form">{{form.check_in}}</span>
+
+        <span class="font-bold">{{form.check_out.label}}</span>
+        <span class="form">{{form.check_out}}</span>
+
+        <span class="font-bold">{{form.catagory.label}}</span>
+        <span class="form">{{form.catagory}}</span>
+
+        <span class="font-bold">{{form.purpose.label}}</span>
+        <span class="form">{{form.purpose}}</span>
+
+        <span class="font-bold">{{form.equipment.label}}</span>
+        <div class="border-2 border-black rounded-lg py-4 text-left pl-12 my-4">
+            <span class="">{{form.equipment}}</span>
+        </div>
+
+        <button class="btn_sn">예약하기</button>
+    </form>
+</div>
+
+{% endblock content %}

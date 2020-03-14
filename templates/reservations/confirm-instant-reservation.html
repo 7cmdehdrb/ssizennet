@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+
+{% block title_name %}
+Instant Reservation Confirming
+{% endblock title_name %}
+
+{% block content %}
+
+
+{% if reservation.lender == user and reservation.accept == False and reservation.instant_boolean == True %}
+
+<div class="container lg:w-5/12 md:w-1/2 border-2 border-gray-500 rounded-lg mx-auto mt-24">
+
+    <form class="mx-10 text-center block" method="post"
+        action="{% url "reservations:confirminstantreservation" reservation.pk %}" enctype="multipart/form-data">
+
+        {% csrf_token %}
+        <div class="py-10 font-bold text-xl"><i class="far fa-address-card text-4xl text-green-600 mb-4"></i>
+            <br>
+            <span class="text-blue-600 text-lg">
+
+                {{reservation.lender}} :
+
+                [
+
+                {% if reservation.catagory == reservation.CATAGOTY_INFO %}
+                <span>정보</span>
+                {% elif reservation.catagory == reservation.CATAGOTY_SCHOOL_EVENTS %}
+                <span>교내행사</span>
+                {% elif reservation.catagory == reservation.CATAGORY_REFINE %}
+                <span>교양</span>
+                {% elif reservation.catagory == reservation.CATAGOTY_REALITY %}
+                <span>예능</span>
+                {% elif reservation.catagory == reservation.CATAGORY_PERFORM %}
+                <span>공연</span>
+                {% elif reservation.catagory == reservation.CATAGORY_RADIO %}
+                <span>라디오</span>
+                {% elif reservation.catagory == reservation.CATAGORY_SURV %}
+                <span>영상제</span>
+                {% elif reservation.catagory == reservation.CATAGORY_PERSONAL %}
+                <span>개인</span>
+                {% else %}
+                <span>{{reservation.catagory}}</span>
+
+                {% endif %}
+
+                ]
+                {{reservation.purpose}}</span>
+            <br>
+            <span>
+                승인코드 4자리를 입력해주세요
+            </span>
+        </div>
+        <span class="hidden">{{form.instant_boolean}}</span>
+        <span class="hidden">{{form.reserv_code}}</span>
+        <span class="hidden">{{form.accept}}</span>
+        <input class="text-center w-full px-5 py-2 text-left rounded-lg border border-black" type="password"
+            name="reserv_confirm" id="reserv_confirm">
+        <button class="mx-20 px-10 py-2 text-center text-center text-4xl mb-4 hover:text-green-600"><i
+                class="fas fa-sign-in-alt"></i></button>
+
+    </form>
+
+</div>
+
+{% else %}
+
+<div class="container lg:w-5/12 md:w-1/2 border-2 border-gray-500 rounded-lg mx-auto mt-24">
+
+    <img src="https://ww.namu.la/s/9620a2d7dd8714969bbaf670d47705fa32678fecaa5b53c78938aef5b83470ab20e50558974382789488f95a91bf11f7294f552b94295b7fa0261f37a523f2340fab933c697069f0ee93bc8bbf4f69ef81dcc9b2a905853e3cde04d2968364e9"
+        alt="">
+
+    <div class="mx-auto text-center mt-8 mb-4">
+        <i class="fas fa-skull-crossbones font-black text-6xl text-red-600"></i>
+    </div>
+    <div class="mx-auto text-center mb-8">
+        <span class="font-black text-2xl text-red-600">어디서 사기를 치려고 하세요?</span>
+    </div>
+</div>
+
+{% endif %}
+
+{% endblock %}

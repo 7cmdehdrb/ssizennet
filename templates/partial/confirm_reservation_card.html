@@ -1,0 +1,75 @@
+{% if reservation.instant_boolean %}
+
+
+<div class="w-full">
+    <table class="w-full table-auto text-center">
+
+        <tr class="border-b border-gray-500 
+        {% if reservation.lender == user %}bg-yellow-200 rounded-md{% endif %}">
+            <td class="h-auto w-1/12 px-2 py-1">{{reservation.lender}}</td>
+            <td class="h-auto px-2 w-1/6 py-1">
+                <span class="font-bold">
+                    [
+
+                    {% if reservation.catagory == reservation.CATAGOTY_INFO %}
+                    <span>정보</span>
+                    {% elif reservation.catagory == reservation.CATAGOTY_SCHOOL_EVENTS %}
+                    <span>교내행사</span>
+                    {% elif reservation.catagory == reservation.CATAGORY_REFINE %}
+                    <span>교양</span>
+                    {% elif reservation.catagory == reservation.CATAGOTY_REALITY %}
+                    <span>예능</span>
+                    {% elif reservation.catagory == reservation.CATAGORY_PERFORM %}
+                    <span>공연</span>
+                    {% elif reservation.catagory == reservation.CATAGORY_RADIO %}
+                    <span>라디오</span>
+                    {% elif reservation.catagory == reservation.CATAGORY_SURV %}
+                    <span>영상제</span>
+                    {% elif reservation.catagory == reservation.CATAGORY_PERSONAL %}
+                    <span>개인</span>
+                    {% else %}
+                    <span>{{reservation.catagory}}</span>
+
+                    {% endif %}
+                    ]
+                </span>
+                <br>
+                {{reservation.purpose}}
+            </td>
+            <td class="h-auto px-2 w-5/12 py-1">
+                {{reservation.get_equipments}}
+
+                {% if reservation.lender == user %}
+
+                <br>
+                <a href="{% url "reservations:reservationdelete" reservation.pk %}">
+                    <span class="text-sm text-gray-600 font-bold">
+                        [취소]
+                    </span>
+                </a>
+
+                {% endif %}
+
+            </td>
+            <td class="h-auto px-2 w-1/4 py-1">{{reservation.check_in}} <br>~<br> {{reservation.check_out}}
+            </td>
+            <td class="h-auto px-2 w-1/6 py-1">
+                {% if reservation.lender == user %}
+                <a href="{% url "reservations:confirminstantreservation" reservation.pk %}"
+                    class="text-center text-4xl py-2 text-green-500 hover:text-green-700">
+                    <i class="fas fa-user-check"></i>
+                </a>
+                {% else %}
+                <span class="text-center text-4xl py-2 text-yellow-500">
+                    <i class="fas fa-user-check"></i>
+                </span>
+                {% endif %}
+            </td>
+
+        </tr>
+
+    </table>
+</div>
+
+
+{% endif %}

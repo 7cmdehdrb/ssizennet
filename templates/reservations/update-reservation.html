@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block title_name %}
+Update Reservation
+{% endblock title_name %}
+
+{% block content %}
+
+
+{% if True %}
+
+<div class="container lg:w-5/12 md:w-1/2 mx-auto my-10 flex flex-col items-center p-5 border border-gray-500 mt-24">
+    PAGE NOT FOUND
+</div>
+{% else %}
+
+
+<div class="container lg:w-5/12 md:w-1/2 mx-auto my-10 flex flex-col items-center p-5 border border-gray-500 mt-24">
+    <form class="" method="post" action="{% url "reservations:updatereservation" reservation.pk %}"
+        enctype="multipart/form-data">
+        {% csrf_token %}
+
+        <span class="font-bold">{{form}}</span>
+
+        <button class="btn_sn mt-10">변경하기</button>
+    </form>
+</div>
+
+{% endif %}
+
+{% endblock content %}

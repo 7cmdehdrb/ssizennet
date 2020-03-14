@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block title_name %}
+Return
+{% endblock title_name %}
+
+{% block content %}
+
+
+{% if reservation.lender == user and reservation.accept == True and reservation.status == "now" and reservation.instant_boolean == False %}
+
+<div class="container lg:w-5/12 md:w-1/2 border-2 border-gray-500 rounded-lg mx-auto mt-24">
+    <div class="w-full py-20 text-center"><i class="fas fa-exclamation-circle text-5xl text-red-600 mb-6"></i>
+        <br><span class="font-bold">반납을 할 경우
+            반납 시간이 기록되며,<br>이 상태는 다시 되돌릴 수 없습니다. 정말 반납하시겠습니까?</span></div>
+
+    <form class="flex pb-10 justify-center" method="post"
+        action="{% url "reservations:updatereservationfinish" reservation.pk %}" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        <span class="hidden">{{form}}</span>
+
+        <div class="w-1/3 h-20 mx-6 bg-green-500 hover:bg-green-600 rounded-lg text-center py-7">
+            <button class=""><span class="py-7 px-10 truncate font-bold text-lg">반납하기</span></button>
+        </div>
+        <div class="w-1/3 h-20 mx-6 bg-red-400 hover:bg-red-500 rounded-lg text-center py-7">
+            <a href="{% url "reservations:reservationlist" %}" class="py-7 px-10 truncate font-bold text-lg">뒤로가기</a>
+        </div>
+    </form>
+
+</div>
+
+{% else %}
+
+<div class="container lg:w-5/12 md:w-1/2 border-2 border-gray-500 rounded-lg mx-auto mt-24">
+
+    <img src="https://ww.namu.la/s/9620a2d7dd8714969bbaf670d47705fa32678fecaa5b53c78938aef5b83470ab20e50558974382789488f95a91bf11f7294f552b94295b7fa0261f37a523f2340fab933c697069f0ee93bc8bbf4f69ef81dcc9b2a905853e3cde04d2968364e9"
+        alt="">
+
+    <div class="mx-auto text-center mt-8 mb-4">
+        <i class="fas fa-skull-crossbones font-black text-6xl text-red-600"></i>
+    </div>
+    <div class="mx-auto text-center mb-8">
+        <span class="font-black text-2xl text-red-600">어디서 사기를 치려고 하세요?</span>
+    </div>
+</div>
+
+{% endif %}
+
+{% endblock %}

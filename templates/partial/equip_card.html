@@ -1,0 +1,28 @@
+<div class="w-1/4 mb-10 px-5">
+    <a href="{% url "equips:detail" equip.pk %}">
+
+
+
+        {% if equip.photo %}
+        <div class="w-full h-64 bg-cover bg-center rounded-lg mb-2" style="background-image: url({{equip.photo.url}});">
+        </div>
+        {% else %}
+        <img src="#" alt="#">
+        {% endif %}
+
+        <div class="flex justify-between mb-2">
+            <div class="w-70% h-7">
+                <span class="text-gray-600 text-sm">{{equip.serial_number}}</span>
+                <span class="text-black text-base font-bold">{{equip.name}}</span>
+            </div>
+            {% if equip.enable %}
+            <span class="text-center"><i class="fas fa-check-circle text-green-600 text-2xl"></i></span>
+            {% else %}
+            <span class="text-center"><i class="fas fa-times-circle text-red-600 text-2xl"></i></span>
+            {% endif %}
+        </div>
+
+
+
+    </a>
+</div>

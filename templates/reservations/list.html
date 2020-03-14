@@ -1,0 +1,44 @@
+{%  extends "base.html"%}
+
+{% block title_name %}
+Reservation
+{% endblock title_name %}
+
+{% block content %}
+
+
+<div class="container mx-auto mb-20 mt-24">
+
+
+    <div class="block text-center border-4 rounded-lg px-2 py-2">
+
+        {% for reservation in reservations %}
+
+        {% include "partial/reservation_card.html" with reservation=reservation %}
+
+        {% endfor %}
+
+    </div>
+
+    <div class="flex justify-center mx-auto container">
+
+        {% if reservations.has_previous %}
+        <a href="?{{address}}&page={{ reservations.previous_page_number }}">
+            <i class="fas fa-arrow-left text-black hover:text-teal-800"></i>
+        </a>
+        {% endif %}
+
+        <span class="mx-2">{{reservations.number}} of {{reservations.paginator.num_pages}}</span>
+
+        {% if reservations.has_next %}
+        <a href="?{{address}}&page={{ reservations.next_page_number }}">
+            <i class="fas fa-arrow-right text-black hover:text-teal-800"></i>
+        </a>
+        {% endif %}
+
+    </div>
+
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,41 @@
+{%  extends "base.html"%}
+
+{% block title_name %}
+Equipment
+{% endblock title_name %}
+
+{% block content %}
+
+<div class="container mx-auto mb-20">
+
+    <div class="flex flex-wrap mt-24">
+
+        {% for equip in equips %}
+
+        {% include "partial/equip_card.html" with equip=equip %}
+
+        {% endfor %}
+
+    </div>
+
+    <div class="flex justify-center mx-auto container my-10">
+
+        {% if equips.has_previous %}
+        <a href="?{{address}}&page={{ equips.previous_page_number }}">
+            <i class="fas fa-arrow-left text-black hover:text-teal-800"></i>
+        </a>
+        {% endif %}
+
+        <span class="mx-2">{{equips.number}} of {{equips.paginator.num_pages}}</span>
+
+        {% if equips.has_next %}
+        <a href="?{{address}}&page={{ equips.next_page_number }}">
+            <i class="fas fa-arrow-right text-black hover:text-teal-800"></i>
+        </a>
+        {% endif %}
+
+    </div>
+
+</div>
+
+{% endblock content %}

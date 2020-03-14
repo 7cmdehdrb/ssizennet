@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block title_name %}
+Update Profile
+{% endblock title_name %}
+
+{% block content %}
+
+<div class="container lg:w-5/12 md:w-1/2 mx-auto my-10 flex flex-col items-center p-5 border border-gray-500 mt-24">
+    <form class="" method="post" action="{% url "users:updateprofile" %}" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        <span class="form font-bold">{{form.username.label}}</span>
+        <span class="form">{{form.username}}</span>
+        <span class="font-bold text-red-600 text-center">{{form.username.errors}}</span>
+
+
+        <span class="form">{{form.email.label}}</span>
+        <span class="form">{{form.email}}</span>
+        <span class="font-bold text-red-600 text-center">{{form.email.errors}}</span>
+
+
+        <span class="form">{{form.departure.label}}</span>
+        <span class="form">{{form.departure}}</span>
+        <span class="font-bold text-red-600 text-center">{{form.departure.errors}}</span>
+
+
+        <span class="form">{{form.order.label}}</span>
+        <span class="form">{{form.order}}</span>
+        <span class="font-bold text-red-600 text-center">{{form.order.errors}}</span>
+
+
+        <span class="form">{{form.kakaotalk.label}}</span>
+        <span class="form">{{form.kakaotalk}}</span>
+        <span class="font-bold text-red-600 text-center">{{form.kakaotalk.errors}}</span>
+
+
+
+        <button class="btn_sn mt-10">수정하기</button>
+    </form>
+</div>
+
+{% endblock content %}

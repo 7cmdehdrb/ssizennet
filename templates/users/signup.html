@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block title_name %}
+Sign Up
+{% endblock title_name %}
+
+
+{% block content %}
+
+<div class="container lg:w-5/12 md:w-1/2 mx-auto my-10 flex flex-col items-center p-5 border border-gray-500 mt-24">
+    <form method="post" action="{% url "users:signup" %}" class="font-bold form">
+        {% csrf_token %}
+
+
+        {{form.username.label}}
+        {{form.username}}
+        <span class="font-bold text-red-600 text-center">{{form.username.errors}}</span>
+
+
+        {{form.password.label}}
+        {{form.password}}
+        <span class="font-bold text-red-600 text-center">{{form.password.errors}}</span>
+
+
+        {{form.re_password.label}}
+        {{form.re_password}}
+        <span class="font-bold text-red-600 text-center">{{form.re_password.errors}}</span>
+
+
+        {{form.email.label}}
+        {{form.email}}
+        <span class="font-bold text-red-600 text-center">{{form.email.errors}}</span>
+
+
+        {{form.departure.label}}
+        {{form.departure}}
+        <span class="font-bold text-red-600 text-center">{{form.departure.errors}}</span>
+
+
+        {{form.order.label}}
+        {{form.order}}
+        <span class="font-bold text-red-600 text-center">{{form.order.errors}}</span>
+
+
+        {{form.kakaotalk.label}}
+        {{form.kakaotalk}}
+        <span class="font-bold text-red-600 text-center">{{form.kakaotalk.errors}}</span>
+
+        <button class="btn_sn mt-10">회원가입</button>
+    </form>
+    <span class="mt-5">이미 회원이시라면 <a href="{% url "users:signup" %}"
+            class="font-bold text-lg text-blue-700">로그인</a>하세요!</span>
+</div>
+
+{% endblock content %}
