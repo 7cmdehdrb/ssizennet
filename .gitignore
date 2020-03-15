@@ -145,10 +145,10 @@ node_modules/
 
 
 ### Django ### 
-*.log 
-*.pot 
-*.pyc 
-__pycache__/ 
-local_settings.py 
-db.sqlite3 
-media
+# *.log 
+# *.pot 
+# *.pyc 
+# __pycache__/ 
+# local_settings.py 
+# db.sqlite3 
+# media

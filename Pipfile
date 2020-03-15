@@ -15,8 +15,8 @@ whitenoise = "*"
 python-telegram-bot = "*"
 django-dotenv = "*"
 requests = "*"
-awsebcli = "*"
 pipenv-to-requirements = "*"
+awsebcli = "*"
 
 [requires]
 python_version = "3.8"
