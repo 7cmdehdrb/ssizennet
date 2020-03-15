@@ -101,7 +101,7 @@ else:
         "default": {
             "ENGINE": "django.db.backends.postgresql",
             # "HOST": os.environ.get("RDS_HOST"),
-            "HOST": "ssizennet.cpzcsxkbqaun.ap-northeast-2.rds.amazonaws.com",
+            "HOST": "ssdata.cpzcsxkbqaun.ap-northeast-2.rds.amazonaws.com",
             # "NAME": os.environ.get("RDS_NAME"),
             "NAME": "postgresql",
             # "USER": os.environ.get("RDS_USER"),
