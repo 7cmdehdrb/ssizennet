@@ -100,11 +100,16 @@ else:
     DATABASES = {
         "default": {
             "ENGINE": "django.db.backends.postgresql",
-            "HOST": os.environ.get("RDS_HOST"),
-            "NAME": os.environ.get("RDS_NAME"),
-            "USER": os.environ.get("RDS_USER"),
-            "PASSWORD": os.environ.get("RDS_PASSWORD"),
-            "PORT": os.environ.get("RDS_PORT"),
+            # "HOST": os.environ.get("RDS_HOST"),
+            "HOST": "ssizennet.cpzcsxkbqaun.ap-northeast-2.rds.amazonaws.com",
+            # "NAME": os.environ.get("RDS_NAME"),
+            "NAME": "ssizennet",
+            # "USER": os.environ.get("RDS_USER"),
+            "USER": "postgresql",
+            # "PASSWORD": os.environ.get("RDS_PASSWORD"),
+            "PASSWORD": "cdkey0246",
+            # "PORT": os.environ.get("RDS_PORT"),
+            "PORT": "5432",
         }
     }
 
