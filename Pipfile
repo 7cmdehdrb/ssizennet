@@ -17,6 +17,7 @@ django-dotenv = "*"
 requests = "*"
 awsebcli = "*"
 pip = "*"
+psycopg2 = "*"
 
 [requires]
 python_version = "3.8"
