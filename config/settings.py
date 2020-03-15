@@ -21,16 +21,15 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # SECURITY WARNING: keep the secret key used in production secret!
 
-# SECRET_KEY = os.environ.get("DJANGO_SECRET_KEY")
-SECRET_KEY = "kwifh6@m1c!-emo^dpz-dr_zy^yt_8(o4&o2xzavci+sv*@tyu"
+SECRET_KEY = os.environ.get("DJANGO_SECRET")
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = bool(os.environ.get("DEBUG"))
-# DEBUG = bool(os.environ.get("DJANGO_DEBUG", True))
+# DEBUG = True
 
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [".elasticbeanstalk.com"]
 
 
 # Application definition
