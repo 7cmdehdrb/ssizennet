@@ -154,8 +154,3 @@ AUTH_USER_MODEL = "users.User"
 MEDIA_ROOT = os.path.join(BASE_DIR, "upload")
 
 MEDIA_URL = "/media/"
-
-
-#
-
-LOCALE_PATHS = (os.path.join(BASE_DIR, "locale"),)
