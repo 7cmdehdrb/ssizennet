@@ -16,6 +16,7 @@ python-telegram-bot = "*"
 django-dotenv = "*"
 requests = "*"
 awsebcli = "*"
+pip = "*"
 
 [requires]
 python_version = "3.8"
