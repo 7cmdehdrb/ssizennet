@@ -15,7 +15,6 @@ whitenoise = "*"
 python-telegram-bot = "*"
 django-dotenv = "*"
 requests = "*"
-pipenv-to-requirements = "*"
 awsebcli = "*"
 
 [requires]
