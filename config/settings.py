@@ -103,7 +103,7 @@ else:
             # "HOST": os.environ.get("RDS_HOST"),
             "HOST": "ssizennet.cpzcsxkbqaun.ap-northeast-2.rds.amazonaws.com",
             # "NAME": os.environ.get("RDS_NAME"),
-            "NAME": "ssizennet",
+            "NAME": "postgresql",
             # "USER": os.environ.get("RDS_USER"),
             "USER": "postgresql",
             # "PASSWORD": os.environ.get("RDS_PASSWORD"),
