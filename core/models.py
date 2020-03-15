@@ -1,4 +1,5 @@
 from django.db import models
+from . import managers
 
 # Create your models here.
 
@@ -9,6 +10,8 @@ class TimeStampedModel(models.Model):
 
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
+
+    objects = managers.CustomModelManager()
 
     # if I write auto_now = True inside of DataTimeField,
     # Field will record date and time when it save model

@@ -1,6 +1,7 @@
 from django.contrib.auth.models import AbstractUser
 from django.shortcuts import reverse
 from django.db import models
+from core import managers as core_managers
 
 # Create your models here.
 
@@ -30,6 +31,8 @@ class User(AbstractUser):
     order = models.IntegerField(null=True)
     kakaotalk = models.CharField(max_length=18)
     upperuser = models.BooleanField(default=False)
+
+    objects = core_managers.CustomUserManager()
 
     def __str__(self):
         return self.username
