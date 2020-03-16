@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
+import sentry_sdk
+from sentry_sdk.integrations.django import DjangoIntegration
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -31,7 +33,7 @@ SECRET_KEY = os.environ.get("DJANGO_SECRET")
 DEBUG = False
 
 
-ALLOWED_HOSTS = [".elasticbeanstalk.com"]
+ALLOWED_HOSTS = [".elasticbeanstalk.com", "127.0.0.1"]
 
 
 # Application definition
@@ -49,6 +51,7 @@ PROJECT_APPS = [
     "users.apps.UsersConfig",
     "equips.apps.EquipsConfig",
     "reservations.apps.ReservationsConfig",
+    "storages",
 ]
 
 
@@ -102,10 +105,10 @@ else:
     DATABASES = {
         "default": {
             "ENGINE": "django.db.backends.postgresql",
-            "HOST": "ssnetdb.cpzcsxkbqaun.ap-northeast-2.rds.amazonaws.com",
-            "NAME": "postgres",
-            "USER": "postgres",
-            "PASSWORD": "cdkey0246",
+            "HOST": os.environ.get("RDS_HOST"),
+            "NAME": os.environ.get("RDS_NAME"),
+            "USER": os.environ.get("RDS_USER"),
+            "PASSWORD": os.environ.get("RDS_PASSWORD"),
             "PORT": "5432",
         }
     }
@@ -154,3 +157,24 @@ AUTH_USER_MODEL = "users.User"
 MEDIA_ROOT = os.path.join(BASE_DIR, "upload")
 
 MEDIA_URL = "/media/"
+
+# sentry
+
+if not DEBUG:
+
+    DEFAULT_FILE_STORAGE = "storages.backends.s3boto3.S3Boto3Storage"
+    STATICFILES_STORAGE = "storages.backends.s3boto3.S3Boto3Storage"
+    AWS_ACCESS_KEY_ID = os.environ.get("ID")
+    AWS_SECRET_ACCESS_KEY = os.environ.get("KEY")
+    AWS_STORAGE_BUCKET_NAME = "ssizen-net-7cmdehdrb"
+    AWS_AUTO_CREATE_BUCKET = True
+    AWS_DEFAULT_ACL = "public-read"
+
+    sentry_sdk.init(
+        dsn=os.environ.get("SENTRY_URL"),
+        integrations=[DjangoIntegration()],
+        # If you wish to associate users to errors (assuming you are using
+        # django.contrib.auth) you may enable sending PII data.
+        send_default_pii=True,
+    )
+

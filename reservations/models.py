@@ -49,8 +49,8 @@ class Reservation(core_models.TimeStampedModel):
     )
     purpose = models.CharField(max_length=30, default="")
     equipment = models.ManyToManyField("equips.Equip", related_name="equipment")
-    check_in = models.DateTimeField(default=timezone.now())
-    check_out = models.DateTimeField(default=timezone.now())
+    check_in = models.DateTimeField(default="2020-01-01 00:00:00")
+    check_out = models.DateTimeField(default="2020-01-01 12:00:00")
     status = models.CharField(
         choices=STATUS_CHOICES, default=STATUS_BEFORE, max_length=10
     )

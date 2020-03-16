@@ -18,6 +18,8 @@ requests = "*"
 awsebcli = "*"
 pip = "*"
 psycopg2 = "*"
+sentry-sdk = "==0.14.2"
+django-storages = "*"
 
 [requires]
 python_version = "3.8"
