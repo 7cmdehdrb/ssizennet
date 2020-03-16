@@ -30,7 +30,7 @@ SECRET_KEY = os.environ.get("DJANGO_SECRET")
 # DEBUG = bool(os.environ.get("DEBUG"))
 # DEBUG = True
 
-DEBUG = False
+DEBUG = True
 
 
 ALLOWED_HOSTS = [".elasticbeanstalk.com", "127.0.0.1"]
@@ -160,15 +160,15 @@ MEDIA_URL = "/media/"
 
 # sentry
 
-if not DEBUG:
+DEFAULT_FILE_STORAGE = "storages.backends.s3boto3.S3Boto3Storage"
+STATICFILES_STORAGE = "storages.backends.s3boto3.S3Boto3Storage"
+AWS_ACCESS_KEY_ID = os.environ.get("ID")
+AWS_SECRET_ACCESS_KEY = os.environ.get("KEY")
+AWS_STORAGE_BUCKET_NAME = "ssizen-net-7cmdehdrb"
+AWS_AUTO_CREATE_BUCKET = True
+AWS_DEFAULT_ACL = "public-read"
 
-    DEFAULT_FILE_STORAGE = "storages.backends.s3boto3.S3Boto3Storage"
-    STATICFILES_STORAGE = "storages.backends.s3boto3.S3Boto3Storage"
-    AWS_ACCESS_KEY_ID = os.environ.get("ID")
-    AWS_SECRET_ACCESS_KEY = os.environ.get("KEY")
-    AWS_STORAGE_BUCKET_NAME = "ssizen-net-7cmdehdrb"
-    AWS_AUTO_CREATE_BUCKET = True
-    AWS_DEFAULT_ACL = "public-read"
+if not DEBUG:
 
     sentry_sdk.init(
         dsn=os.environ.get("SENTRY_URL"),
